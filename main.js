@@ -50,8 +50,16 @@ console.log(person.fullname())
  * При виконанні завдання не використовуйте оператор if, потрібен розв'язок із логічним оператором ||.
  */
 
-// console.log(defUpperStr('My text')) // MY TEXT
-// console.log(defUpperStr())             // DEFAULT TEXT
+ function UpperStr(text) {
+     text = text || 'default text'
+    return text.toUpperCase();
+}
+
+
+
+
+ console.log(UpperStr('My text')) // MY TEXT
+ console.log(UpperStr())             // DEFAULT TEXT
 
 /*
  * #4
@@ -70,9 +78,19 @@ console.log(person.fullname())
  * evenFn(20) → [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
  */
 
-// console.log(evenFn(10)) // [2, 4, 6, 8, 10]
-// console.log(evenFn(15)) // [2, 4, 6, 8, 10, 12, 14]
-// console.log(evenFn(20)) // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+function evenFn(n) {
+    let result = [];
+    for (let i = 1; i <= n; i++) {
+        if (i % 2 === 0) { // Перевірка на парність числа
+            result.push(i); // Додавання числа до масиву якщо воно парне
+        }
+    }
+    return result;
+}
+
+console.log(evenFn(10)); // [2, 4, 6, 8, 10]
+console.log(evenFn(15)); // [2, 4, 6, 8, 10, 12, 14]
+console.log(evenFn(20)); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
 /*
  * #5
@@ -90,6 +108,41 @@ console.log(person.fullname())
  * '2' → null
  * У реалізації функції обов'язково мають бути використані оператори switch / case / default.
  */
+
+function weekFn(w) {
+    switch (w) {
+        case 1:
+            console.log("Понеділок");
+            break;
+        case 2:
+            console.log("Вівторок");
+            break;
+        case 3:
+            console.log("Середа");
+            break;
+        case 4:
+            console.log("Четвер");
+            break;
+        case 5:
+            console.log("П'ятниця");
+            break;
+        case 6:
+            console.log("Субота");
+            break;
+        case 7:
+            console.log("Неділя");
+            break;
+        default:
+            console.log("Невірне значення");
+    }
+}
+
+weekFn(1); // Понеділок
+weekFn(4); // Четвер
+weekFn(7); // Неділя
+weekFn(10); // Невірне значення
+
+
 
 // console.log(weekFn(1))   // 'Понеділок'
 // console.log(weekFn(3))   // 'Середа'
@@ -132,8 +185,21 @@ console.log(person.fullname())
 // console.log('122.01 :', ageClassification(122.01)) // 122.01 : null
 // console.log('   150 :', ageClassification(150)) // 150 : null
 
-/*
- Блок тестирования, везде должны быть true:
+function ageClassification(w) {
+    return w <= 0 ? null
+        : w <= 24 ? 'Дитинство'
+            : w <= 44 ? 'Молодість'
+                : w <= 65 ? 'Зрілість'
+                : w <= 75 ? 'Старість'
+                    : w <= 90 ? 'Довголіття'
+                        : w <= 122 ? 'Рекорд'
+                        : null
+
+}
+
+
+
+ // Блок тестирования, везде должны быть true:
  console.log('    -1 :', ageClassification(-1) === null); // -1 : null
  console.log('     0 :', ageClassification(0) === null) // 0 : null
  console.log('     1 :', ageClassification(1) === 'Дитинство'); // 1 : Дитинство
@@ -150,13 +216,17 @@ console.log(person.fullname())
  console.log('   122 :', ageClassification(122) === 'Рекорд'); // 122 : Рекорд
  console.log('122.01 :', ageClassification(122.01) === null); // 122.01 : null
  console.log('   150 :', ageClassification(150) === null); // 150 : null
-*/
+
 
 /*
  * #7
  *
  * Створіть функцію oddFn(n), яка приймає параметром число - кількість ітерацій циклу.
  * Функція повинна повернути масив, що складається тільки з непарних значень, які генеруються в циклі.
+ *
+ *
+ *
+ *
  *
  * Причому:
  * 0 не повинен потрапляти в результуючий масив,
@@ -169,9 +239,25 @@ console.log(person.fullname())
  * oddFn(20) → [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
  */
 
-// console.log(oddFn(10)) // [1, 3, 5, 7, 9]
-// console.log(oddFn(15)) // [1, 3, 5, 7, 9, 11, 13, 15]
-// console.log(oddFn(20)) // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+
+function oddFn(n) {
+    let result = [];
+    let i = 1;
+    while (i <= n) {
+        if (i % 2 !== 0) {
+            result.push(i);
+        }
+        i++;
+    }
+    return result;
+}
+
+
+
+ console.log(oddFn(10)) // [1, 3, 5, 7, 9]
+ console.log(oddFn(15)) // [1, 3, 5, 7, 9, 11, 13, 15]
+ console.log(oddFn(20)) // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+
 
 /*
  * #8
@@ -208,8 +294,28 @@ console.log(person.fullname())
  * mainFunc(2, 5, cbAdd) → 7
  * mainFunc(2, 5, 'not a func') → false
  */
+function mainFunc(a, b, cb) {
+    if (typeof cb !== 'function') {
+        return false;
+    }
+    return cb(a, b);
+}
 
-// console.log(mainFunc(2, 5, cbRandom)) // цілі числа в діапазоні 2..5
-// console.log(mainFunc(2, 5, cbPow)) // 32
-// console.log(mainFunc(2, 5, cbAdd)) // 7
-// console.log(mainFunc(2, 5, 'not a func')) // false
+function cbRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+function cbPow(num, pow) {
+    return Math.pow(num, pow);
+}
+
+
+function cbAdd(a, b) {
+    return a + b;
+}
+
+ console.log(mainFunc(2, 5, cbRandom)) // цілі числа в діапазоні 2..5
+ console.log(mainFunc(2, 5, cbPow)) // 32
+ console.log(mainFunc(2, 5, cbAdd)) // 7
+ console.log(mainFunc(2, 5, 'not a func')) // false
